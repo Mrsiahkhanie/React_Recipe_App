@@ -7,28 +7,28 @@ const App = () => {
   const APP_KEYS = process.env.REACT_APP_API_KEY;
 
   const [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState([]);
+  const [search, setSearch] = useState("");
   const [query, setQuery] = useState('chicken');
   const [isLoading, setLoading] = useState(false);
 
   useEffect(()=> {
-    runRecipe();
-  }, [query])
-
-
-  const runRecipe = async () => {
-    try {
-      setLoading(true)
-      const respons = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEYS}`);
-      const data = await respons.json();
-      setRecipes(data.hits);
-      setSearch('');
-      setLoading(false)
-    } catch(error) {
-      setLoading(false);
-      alert('error')
+    const runRecipe = async () => {
+      try {
+        setLoading(true)
+        const respons = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEYS}`);
+        const data = await respons.json();
+        setRecipes(data.hits);
+        setSearch('');
+        setLoading(false)
+      } catch(error) {
+        setLoading(false);
+        alert('error: ' + error)
+      }
     }
-  }
+
+    runRecipe();
+  },[query])
+
 
   const runupdateSearch = (e) => {
     setSearch(e.target.value)

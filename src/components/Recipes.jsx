@@ -12,7 +12,7 @@ const Recipes = (props) => {
         ))}
       </ol>
       <p>The Calories: {calories}</p>
-      <img src={image} className={style.image}/>
+      <img src={image} alt={title} className={style.image}/>
     </div>
   );
 }
