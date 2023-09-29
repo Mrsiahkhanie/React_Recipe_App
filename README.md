@@ -12,7 +12,7 @@ Note: installed nodejs & npm on systeam
 
 5- getting Id Api and Key your account
 
-6- create filename > .env
+6- change filename > .env-sample to .env
 
 7- put up Id and Key api in variable onder in file .env
 
